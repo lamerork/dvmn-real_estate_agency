@@ -9,7 +9,7 @@ def copy_flat_to_owners(apps, schema_editor):
 
     flats = Flat.objects.all()
 
-    for flat in flats:
+    for flat in flats.iterator():
     
         owner, _ = Owner.objects.get_or_create(owner=flat.owner, owner_pure_phone=flat.owner_pure_phone)
         owner.flat.add(flat)

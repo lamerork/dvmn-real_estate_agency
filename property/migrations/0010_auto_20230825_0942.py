@@ -8,7 +8,7 @@ def copy_flat_to_owners(apps, schema_editor):
     flats = Flat.objects.all()
     Owner = apps.get_model('property', 'Owner')
 
-    for flat in flats:
+    for flat in flats.iterator():
     
         Owner.objects.get_or_create(
             owner=flat.owner, 
